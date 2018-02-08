@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        Function.prototype.applyF = function(context) {
+            console.log(this);
+            context.fn = this;
+            context.fn();
+            delete context.fn;
+
+        }
+        const js = {
+            name: 'javascript',
+            say(area) {
+                console.log('js says:', `I'm ${this.name} ,I'm very popular in ${area}`);
+            },
+        }
+
+        const py = {
+            name: 'python',
+            area: 'science',
+        }
+
+        js.say.applyF(py);
+    </script>
+    <script>
+        function unique(obj) {
+            const uniqueProps = Math.random() * 10000;
+            if (obj.hasOwnProperty(uniqueProps)) {
+                arguments.callee(obj) //递归调用直到没有
+            } else {
+                return uniqueProps;
+            }
+        }
+        Function.prototype.applyF = function(context = window, arr) {
+            //const fn = unique(context);
+            const fn = Symbol();
+            context['fn'] = this; //保证fn属性唯一性
+            const arrSeq = arr.map((item, i) => {
+                return typeof item === 'string' ? `'${item}'` : item
+            })
+            if (!arr.length) {
+                context.fn();
+            } else {
+                fnStr = `context.fn(${arrSeq.join(',')})`;
+                eval(fnStr);
+            }
+
+            delete context.fn;
+
+        }
+        const js3 = {
+            name: 'javascript',
+            say(area) {
+                console.log('js says:', `I'm ${this.name} ,I'm very popular in ${area}`);
+            },
+        }
+
+        const py3 = {
+            name: 'python',
+            area: 'science',
+        }
+
+        js.say.applyF(py3, ['science']);
+    </script>
+    <script>
+        //call
+        Function.prototype.callF = function(context, ...rest) {
+            console.log(rest);
+            return this.applyF(context, rest);
+        }
+        const js2 = {
+            name: 'javascript',
+            say(area) {
+                console.log('js says:', `I'm ${this.name} ,I'm very popular in ${area}`);
+            },
+        }
+
+        const py2 = {
+            name: 'python',
+            area: 'science',
+        }
+
+        js.say.callF(py2, 'science');
+    </script>
+</body>
+
+</html>

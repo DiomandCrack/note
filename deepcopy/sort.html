@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const sort = (arr) => {
+            for (let i = 0; i < arr.length - 1; i++) {
+                for (let j = i + 1; j < arr.length; j++) {
+                    if (arr[i] > arr[j]) {
+                        m = arr[j];
+                        arr[j] = arr[i];
+                        arr[i] = m;
+                    }
+                }
+            }
+            return arr
+        }
+
+        const arr = [7, 4, 8, 6, 10]
+
+        console.log(sort(arr))
+    </script>
+</body>
+
+</html>

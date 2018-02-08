@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const js = {
+            name: 'javascript',
+            say(area) {
+                console.log('js says:', `I'm ${this.name} ,I'm very popular in ${area}`);
+            },
+        }
+
+        const py = {
+            name: 'python',
+            area: 'science',
+        }
+
+        js.say('web');
+        //call
+        js.say.call(py, 'science');
+        //apply
+        js.say.apply(py, ['AI']);
+        //bind
+        js.say = js.say.bind(py);
+        js.say('web');
+    </script>
+</body>
+
+</html>

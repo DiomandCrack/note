@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const obj = null
+        const deepCopy = (obj) => {
+            if (obj === null) {
+                console.warn('deepCopy param is null');
+            }
+            const result = {};
+            for (let key in obj) {
+                if (typeof obj[key] === 'object') {
+                    result[key] = deepCopy(obj[key]);
+                } else {
+                    result[key] = obj[key]
+                }
+            }
+            return result;
+        }
+        const anotherObj = deepCopy(obj);
+        anotherObj.name = 'DiamondCrack'
+        console.log('me', obj);
+        console.log('another me', anotherObj);
+    </script>
+</body>
+
+</html>

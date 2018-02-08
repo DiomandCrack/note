@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        class Person1 {
+            constructor(name) {
+                this.name = name;
+            }
+            greeting() {
+                setTimeout(() => {
+                    console.log('class:', `My name is ${this.name}`);
+                }, 500);
+            }
+        }
+        const Mary = new Person1('Mary');
+        Mary.greeting();
+
+        function Person2(name) {
+            this.name = name;
+            this.greeting = () => {
+                setTimeout(() => {
+                    console.log('constructor function with arrow function:', `My name is ${this.name}`);
+                }, 500);
+            }
+        }
+        const Jack = new Person2('Jack');
+        Jack.greeting();
+
+        function Person3(nickName) {
+            this.nickName = nickName; //window 有默认的name属性
+            //const that = this;//缓存this
+            this.greeting = () => {
+                setTimeout(function() {
+                    console.log('constructor function without arrow function:', `My name is ${that.nickName}`);
+                }, 500);
+            }
+        }
+        const Mike = new Person3('Mike');
+        Mike.greeting();
+    </script>
+</body>
+
+</html>
