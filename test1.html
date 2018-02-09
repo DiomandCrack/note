@@ -52,9 +52,10 @@
         const imgAll = document.getElementsByClassName('img-item'); //当时写的querySelectorAll 就栽在这了
 
         for (let i = 0; i < imgAll.length; i++) {
+            imgAll[i].index = i;
             imgAll[i].onclick = function() {
-                imgContainer.removeChild(imgAll[0]);
-                imgContainer.appendChild(this);
+                console.log(imgAll[0]);
+                imgContainer.insertBefore(imgAll[0], null)
             }
         }
     </script>
