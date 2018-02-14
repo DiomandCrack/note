@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html,
+        body {
+            width: 100%;
+        }
+        
+        body {
+            margin: 0;
+        }
+        
+        article div {
+            height: 100px;
+        }
+        
+        h2 {
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="layout flex">
+        <style>
+            .layout.flex article {
+                display: flex;
+            }
+            
+            .flex .left,
+            .flex .right {
+                width: 300px;
+            }
+            
+            .flex .left {
+                background: red;
+            }
+            
+            .flex .right {
+                background: blue;
+            }
+            
+            .flex .center {
+                flex: 1
+            }
+        </style>
+        <article class="left-right-center">
+            <div class="left"></div>
+            <div class="center">
+                <h2>
+                    弹性盒模型解决方案
+                </h2>
+            </div>
+            <div class="right"></div>
+        </article>
+    </section>
+
+    <section class="layout grid">
+        <style>
+            .grid article {
+                display: grid;
+                width: 100%;
+                grid-template-rows: 100px;
+                grid-template-columns: 300px auto 300px;
+            }
+            
+            .grid .left {
+                background: hotpink;
+            }
+            
+            .grid .right {
+                background: navy
+            }
+        </style>
+        <article class="left-right-center">
+            <div class="left"></div>
+            <div class="center">
+                <h2>网格解决方案</h2>
+            </div>
+            <div class="right"></div>
+        </article>
+    </section>
+
+    <section class="layout float">
+        <style>
+            .float .left,
+            .float .right {
+                width: 300px;
+            }
+            
+            .float .left {
+                background: greenyellow;
+                float: left;
+            }
+            
+            .float .right {
+                background: orangered;
+                float: right;
+            }
+            
+            .float .center {
+                float: left;
+                text-align: center;
+            }
+            
+            .clear::before {
+                content: '.';
+                width: 0;
+                height: 0;
+                clear: both;
+                visibility: hidden;
+                overflow: hidden;
+            }
+        </style>
+        <article class="left-right-center">
+            <div class="left"></div>
+            <div class="center">
+                <h2>浮动解决方案</h2>
+            </div>
+            <div class="right"></div>
+            <div class="clear"></div>
+        </article>
+    </section>
+
+    <section class="layout position">
+        <style>
+            .position {
+                position: relative;
+                height: 100px;
+            }
+            
+            .position article div {
+                position: absolute;
+            }
+            
+            .position .left {
+                background: purple;
+                width: 300px;
+                left: 0;
+            }
+            
+            .position .right {
+                background: cyan;
+                right: 0;
+                width: 300px;
+            }
+            
+            .position .center {
+                left: 300px;
+                right: 300px;
+            }
+        </style>
+        <article class="left-right-center">
+            <div class="left"></div>
+            <div class="center">
+                <h2>定位解决方案</h2>
+            </div>
+            <div class="right"></div>
+        </article>
+    </section>
+
+    <section class="layout table">
+        <style>
+            .table article {
+                display: table;
+                height: 100px;
+                width: 100%;
+            }
+            
+            .table article div {
+                display: table-cell;
+                height: 0;
+            }
+            
+            .table .left,
+            .table .right {
+                width: 300px;
+            }
+            
+            .table .left {
+                background: red;
+            }
+            
+            .table .right {
+                background: blue;
+            }
+        </style>
+        <article class="left-right-center">
+            <div class="left"></div>
+            <div class="center">
+                <h2>网格解决方案</h2>
+            </div>
+            <div class="right"></div>
+        </article>
+    </section>
+
+    <section class="layout inline-block">
+        <style>
+            .inline-block {
+                font-size: 0;
+            }
+            
+            .inline-block article div {
+                display: inline-block;
+            }
+            
+            .inline-block .left,
+            .inline-block .right {
+                width: 300px;
+            }
+            
+            .inline-block .left {
+                background: green;
+            }
+            
+            .inline-block .right {
+                background: #000;
+            }
+            
+            .inline-block .center {
+                width: 100%;
+                margin-left: -300px;
+                margin-right: -300px;
+                font-size: 1rem;
+                overflow: hidden;
+            }
+            
+            .inline-block .center-container {
+                margin-left: 300px;
+                margin-right: 300px;
+            }
+        </style>
+        <article class="left-right-center">
+            <div class="left"></div>
+            <div class="center">
+                <div class="center-container">
+                    <h2>内联块解决方案</h2>
+                </div>
+            </div>
+            <div class="right"></div>
+        </article>
+    </section>
+</body>
+
+</html>
