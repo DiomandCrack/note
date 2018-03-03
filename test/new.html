@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const new2 = function(func) {
+            const o = Object.create(func.prototype)
+                //绑定this到o
+            const k = func.call(o)
+
+            if (typeof k === 'object') {
+                return k
+            } else {
+                return o
+            }
+        }
+    </script>
+</body>
+
+</html>

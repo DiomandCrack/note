@@ -57,7 +57,7 @@ ex **IE6** 小写字母x的高度的相对单位
 }
 ```
 
-## `line-height`
+### `line-height`
 
 行高: 一行文字的高度
 
@@ -70,3 +70,70 @@ em-box 只受font-size影响
 **只有宋体 内容区域和em-box是等同的**
 
 `line-height`不能影响替换元素
+
+#### `line-height` 可以让单行或多行元素近似居中
+
+单行'近似'是因为文字字形的垂直中线位置普遍要比真正的'行框盒子'的垂直中线位置低
+
+##### 多行元素近似居中
+
+多行元素'近似'居中的近似跟`vertical-align`有关
+
+```css
+.box{
+    line-height:120px;
+    background-color:#f0f3f9
+}
+
+.content{
+    display:inline-block;
+    line-height:20px;
+    margin:0 20px;
+    vertical-align:middle;
+}
+```
+
+```html
+<div class='box'>
+    <div class='content'>多行文字</div>
+</div>
+```
+
+1. 因为`display:inline-block` `.content`是一个行框盒子,行框盒子前有个宽度为0的'幽灵空白节点',正是因为这个'幽灵空白节点'撑起了`.box``line-height:120px`高度为120px
+
+2. 内联元素默认基线对齐,`vertical-align:middle`来调整多行文本的垂直位置
+
+#### line-height的各项属性值
+
+line-height的默认值是normal 还支持数值,百分数以及长度值。
+
+normal是一个变量
+
+数值、百分数、em用法都是相对于字体大小的计算值
+
+长度值: px
+
+区别: **line-height属性为数值时，那么所有子元素继承的都是这个数值,属性为其他单位时子元素继承的是最终的计算值**
+
+很多替换元素默认不会继承line-height
+
+所以会有 
+
+```css
+*{
+    line-height:150%;
+}
+```
+
+避免使用通配符
+
+```css
+body{
+    line-height:1.5;
+}
+input,button{
+    line-height:inherit;
+}
+```
+
+k
