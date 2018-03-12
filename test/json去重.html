@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const json = [{
+            "code": "001",
+            "name": "北京市",
+            "qymc": "雪花啤酒",
+            "pfkmc": "雪花排气口1#"
+        }, {
+            "code": "002",
+            "name": "北京市",
+            "qymc": "雪花啤酒",
+            "pfkmc": "雪花排气口2#"
+        }, {
+            "code": "003",
+            "name": "上海市",
+            "qymc": "雪花啤酒",
+            "pfkmc": "雪花排气口2#"
+        }]
+
+        function norepeat(arr) {
+            let newArr = []
+            let newB = []
+            for (let i = 0; i < arr.length; i++) {
+                if (newArr.indexOf(arr[i].name) == -1) {
+                    console.log(arr[i].name)
+                    newArr.push(arr[i].name)
+                    newB.push(arr[i])
+                }
+            }
+            return newB
+        }
+    </script>
+</body>
+
+</html>
