@@ -1,17 +1,20 @@
 {
-  "name": "webpack-babel",
-  "version": "1.0.0",
-  "description": "",
-  "main": "app.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "babel-core": "^6.26.0",
-    "babel-preset-env": "^1.6.1",
-    "bable-loader": "^0.0.1-security",
-    "webpack": "^4.1.1"
-  }
+    "name": "webpack-babel",
+    "version": "1.0.0",
+    "description": "",
+    "main": "app.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "babel-core": "^6.26.0",
+        "babel-plugin-runtime": "^1.0.7",
+        "babel-polyfill": "^6.26.0",
+        "babel-preset-env": "^1.6.1",
+        "babel-runtime": "^6.26.0",
+        "bable-loader": "^0.0.1-security",
+        "lodash": "^4.17.5"
+    }
 }

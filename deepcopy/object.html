@@ -10,21 +10,34 @@
 
 <body>
     <script>
-        const obj = null
-        const deepCopy = (obj) => {
+        let obj = null
+        const deepCopy = (obj = {}) => {
             if (obj === null) {
                 console.warn('deepCopy param is null');
             }
             const result = {};
-            for (let key in obj) {
+            // for (let key in obj) {
+            //     if (typeof obj[key] === 'object') {
+            //         result[key] = deepCopy(obj[key]);
+            //     } else {
+            //         result[key] = obj[key]
+            //     }
+            // }
+            // return result;
+            Object.keys(obj).forEach(key => {
                 if (typeof obj[key] === 'object') {
-                    result[key] = deepCopy(obj[key]);
+                    result[key] = deepCopy(obj[key])
                 } else {
                     result[key] = obj[key]
                 }
-            }
-            return result;
+            })
+            return result
         }
+        obj = [1, 2, {
+            a: {
+                b: 'c'
+            }
+        }]
         const anotherObj = deepCopy(obj);
         anotherObj.name = 'DiamondCrack'
         console.log('me', obj);

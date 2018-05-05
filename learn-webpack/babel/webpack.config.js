@@ -4,7 +4,7 @@ module.exports = {
         app:'./app.js'
     },
     output:{
-        filename:'[name].[hash:5].js'
+        filename:'./[name].[hash:5].js'
     },
     module:{
         //rulse是个数组
