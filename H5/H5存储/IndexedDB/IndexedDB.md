@@ -19,3 +19,12 @@ indexedDB.open(key,version)
 ```js
 indexedDB.deleteDatabase(key)
 ```
+
+## 创建表
+
+```js
+indexedDB.createObjectStore(osName,{autoIncrement:true})
+```
+
+`osName`表的名称
+`{autoIncrement:true}`主键类型为指针

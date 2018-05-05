@@ -2,13 +2,13 @@ var db = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || wi
 
 var requeset,result,version=1,
   dbName='testDB'
-  osName='objectStore'
+  osName='os1'
 
   function createDB() {
     request = db.open(dbName,version)
     
     request.onsuccess = function () {
-      db = requeset.result
+      db = request.result
     }
     
     request.onerror = function(e){
@@ -17,7 +17,12 @@ var requeset,result,version=1,
 
     request.onupgradeneeded = function () {
       db = request.result
-      console.log('upgradeneeded')
+      //检查数据库中是否含有os1
+      if(!db.objectStoreNames.contains(osName)){
+        //没有就创建表
+        //主键类型为指针
+        db.createObjectStore(osName,{autoIncrement:true})
+      }
     }
   }
 
