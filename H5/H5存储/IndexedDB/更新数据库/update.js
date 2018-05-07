@@ -1,6 +1,6 @@
 var db = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB
 
-var requeset,result,version=3,
+var request,result,version=3,
   dbName='testDB'
   osName='os1'
 
@@ -67,5 +67,18 @@ var requeset,result,version=3,
     var request = store.getAll()
     request.onsuccess = function () {
       console.log(request.result)
+    }
+  }
+
+  function updateData(id){
+    var transaction = db.transaction(osName,'readwrite')
+    var store = transaction.objectStore(osName)
+    var request = store.get(id)
+    request.onsuccess = function () {
+      request = store.put({
+        name:'小猎犬',
+        id:'004',
+        hp:9
+      })
     }
   }
