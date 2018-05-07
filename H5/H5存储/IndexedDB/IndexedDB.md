@@ -27,7 +27,7 @@ indexedDB.createObjectStore(osName,{autoIncrement:true})
 ```
 
 `osName`表的名称
-`{autoIncrement:true}`主键类型为指针
+`{autoIncrement:true}`主键类型为自增
 
 ## 表的增删改查
 
@@ -58,3 +58,6 @@ const {result} = request
 使用 `IDBRequest.onsuccess`绑定查询完成事件
 使用 `IDBRequest.result` 获取查询结果
 使用 `IDBRequest.onerror` 获取失败结果
+
+设置自增主键 - `{autoIncrement:true}`
+取数据中字段作为主键 - `{keyPath:字段名}`
