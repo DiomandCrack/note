@@ -61,3 +61,28 @@ const {result} = request
 
 设置自增主键 - `{autoIncrement:true}`
 取数据中字段作为主键 - `{keyPath:字段名}`
+
+## 索引
+
+### 创建索引
+
+```js
+IDBObjectStore.createIndex(indexName,keyPath,optionParameters)
+```
+- `indexName`索引名称
+- `keyPath` 索引字段，可以为空或者数组
+- `optionParameters` 索引配置参数
+    - `unique`表示`keyPath`是否唯一
+    - `multiEntry`表示是否为 `keyPath` 字段的每一项建立一条索引数据
+### 索引的方法
+
+1. 查询数据
+```js
+IDBIndex.get(id)
+```
+
+2. 查询所有的数据
+
+```js
+IDBIndex.getAll()
+```

@@ -19,12 +19,16 @@ var request,result,version=3,
     request.onupgradeneeded = function () {
       db = request.result
       //检查数据库中是否含有os1
+      var store
       console.log('onupgradeneeded')
       if(!db.objectStoreNames.contains(osName)){
         //没有就创建表
         //主键类型为自增{autoIncrement:true}
         //id字段作为key {keyPath:'id'}
-        db.createObjectStore(osName,{keyPath:'id'})
+        store = db.createObjectStore(osName,{keyPath:'id'})
+        //创建索引
+        store.createIndex('index','id',{unique:true})
+        store.createIndex('categoryIndex','category',{mutiEntry:true})
       }
     }
   }
@@ -34,15 +38,18 @@ var request,result,version=3,
   var data = [{
     name:'史莱姆',
     id:'001',
-    hp:3
+    hp:3,
+    category:['怪物','容易逃跑']
   },{
     name:'小蝙蝠',
     id:'002',
-    hp:5
+    hp:5,
+    category:['怪物','飞行']
   },{
     name:'小恶魔',
     id:'003',
-    hp:9
+    hp:9,
+    category:['怪物','恶魔']
   }]
 
   function addData() {
@@ -99,5 +106,15 @@ var request,result,version=3,
     var request = store.clear()
     request.onsuccess = function () {
       console.log('clear success')
+    }
+  }
+
+  function getIndex (id) {
+    var transaction = db.transaction(osName,'readwrite')
+    var store = transaction.objectStore(osName)
+    var index = store.index('index')
+    var request = index.get(id)
+    request.onsuccess = function () {
+      console.log(request.result)
     }
   }
