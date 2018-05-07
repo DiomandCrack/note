@@ -88,6 +88,15 @@ var request,result,version=3,
     var store = transaction.objectStore(osName)
     var request = store.delete(id)
     request.onsuccess = function () {
-      console.log(request.result)
+      console.log('delete success',request.result)
+    }
+  }
+
+  function clear () {
+    var transaction = db.transaction(osName,'readwrite')
+    var store = transaction.objectStore(osName)
+    var request = store.clear()
+    request.onsuccess = function () {
+      console.log('clear success')
     }
   }
