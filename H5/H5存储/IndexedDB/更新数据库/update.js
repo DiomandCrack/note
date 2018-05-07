@@ -22,8 +22,9 @@ var request,result,version=3,
       console.log('onupgradeneeded')
       if(!db.objectStoreNames.contains(osName)){
         //没有就创建表
-        //主键类型为指针
-        db.createObjectStore(osName,{autoIncrement:true})
+        //主键类型为指针{autoIncrement:true}
+        //id字段作为key {keyPath:'id'}
+        db.createObjectStore(osName,{keyPath:'id'})
       }
     }
   }
