@@ -82,3 +82,12 @@ var request,result,version=3,
       })
     }
   }
+
+  function deleteData(id){
+    var transaction = db.transaction(osName,'readwrite')
+    var store = transaction.objectStore(osName)
+    var request = store.delete(id)
+    request.onsuccess = function () {
+      console.log(request.result)
+    }
+  }
