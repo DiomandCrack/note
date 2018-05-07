@@ -78,7 +78,7 @@ var request,result,version=3,
     request.onsuccess = function () {
       request = store.put({
         name:'小猎犬',
-        id:'004',
+        id:id,
         hp:9
       })
     }

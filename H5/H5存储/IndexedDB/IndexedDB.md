@@ -54,3 +54,7 @@ store.add({a:1})
 const request = store.get(id)
 const {result} = request
 ```
+
+使用 `IDBRequest.onsuccess`绑定查询完成事件
+使用 `IDBRequest.result` 获取查询结果
+使用 `IDBRequest.onerror` 获取失败结果
