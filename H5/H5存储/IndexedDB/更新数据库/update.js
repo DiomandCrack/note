@@ -217,3 +217,41 @@ function useIndexAndCursorDeleteData() {
     }
   }
 }
+
+function secondChance () {
+  var transaction = db.transaction(osName,'readwrite')
+  var store = transaction.objectStore(osName)
+  var index = store.index('hpIndex')
+  var request = index.openCursor(IDBKeyRange.upperBound(5))
+
+  request.onsuccess = function () {
+    var cursor = request.result
+    var value = null
+    if(cursor){
+      value = cursor.value
+      value.hp += 10
+      cursor.update(value)
+      console.log(cursor.value)
+      cursor.continue()
+    }
+  }
+}
+
+function powerMonster () {
+  var transaction = db.transaction(osName,'readwrite')
+  var store = transaction.objectStore(osName)
+  var index = store.index('hpIndex')
+  var request = index.openCursor(IDBKeyRange.bound(5,10,true,true))
+
+  request.onsuccess = function () {
+    var cursor = request.result
+    var value = null
+    if(cursor){
+      value = cursor.value
+      value.hp += 20
+      cursor.update(value)
+      console.log(cursor.value)
+      cursor.continue()
+    }
+  }
+}
