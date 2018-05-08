@@ -60,3 +60,12 @@ var requeset,result,version=3,
       console.log(request.result)
     }
   }
+
+  function getAllData(){
+    var tarnsaction = db.transaction(osName,'readwrite')
+    var store = transaction.objectStore(osName)
+    var request = store.getAll()
+    request.onsuccess = function (){
+      console.log(request.result)
+    }
+  }
