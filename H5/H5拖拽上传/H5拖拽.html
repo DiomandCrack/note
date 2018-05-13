@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src='https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js'></script>
+  <title>Document</title>
+  <style>
+    .container{
+      width: 200px;
+      height: 200px;
+      background: yellow;
+    }
+    .containerDrop{
+      background: green;
+    }
+    .target{
+      width: 100px;
+      height: 100px;
+      background: blue;
+    }
+    .hide{
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="container" class="container" ondrop='drop(event)' ondragover='dragover(event)' ondragenter="dragenter(event)" ondragleave="dragleave(event)" ondragend='dragendContainer(event)'></div>
+  <div id="target" class="target" draggable='true' ondragstart="dragstart(event)" ondrag='drag(event)' ondragend="dragendTarget(event)"></div>
+  <img src="./test.jpg" alt="img" class='hide' id='image'>
+  <script>
+    var dragstart = function(e) {
+      e.dataTransfer.setData('Text',e.target.id)
+      e.dataTransfer.setDragImage($('#image').clone().removeClass('hide')[0],0,0)
+    }
+    var drop = function(e) {
+      e.preventDefault();
+      var data = e.dataTransfer.getData('Text');
+      e.target.appendChild(document.getElementById(data))
+    }
+
+    var dragover = function(e){
+      e.preventDefault();
+    }
+
+    var dragenter = function(e) {
+      e.preventDefault();
+      $('#container').addClass('containerDrop')
+    }
+
+    var dragleave = function(e) {
+      e.preventDefault();
+      $('#container').removeClass('containerDrop')
+    }
+
+    var dragendContainer = function(e){
+      console.log('dragendContainer')
+    }
+
+    var dragendTarget = function(e){
+      console.log('drageendTarget')
+    }
+  </script>
+</body>
+</html>
