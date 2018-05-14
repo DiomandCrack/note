@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src='https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js'></script>
+  <style>
+    .page {
+      width: 1000px;
+      margin: 0 auto;
+    }
+    .left{
+      width: 500px;
+      float: left;
+    }
+    .left .container{
+      padding:10px;
+      min-height: 500px;
+      box-sizing: border-box;
+    }
+    .left .containerDrop{
+      background-color:#eeeeee;
+
+    }
+    .left .container h1 {
+      text-align: center;
+    }
+    .right{
+      width: 500px;
+      float: left;
+      box-sizing: border-box;
+      border-left: 1px solid red;
+    }
+    .right .ctrlList{
+      padding:10px;
+    }
+    .right .ctrlList .box {
+      border: 1px dashed gray;
+    }
+    .line {
+      margin-top:10px;
+      margin-bottom:10px;
+      padding:5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="left">
+      <div id="container" class="container">
+        <h1>问卷</h1>
+      </div>
+    </div>
+    <div class="right">
+      <div class="ctrlList">
+        <div class="box" draggable="true">
+          <div class="line">
+            <span>姓名：</span>
+            <input type='text' name='age' placeholder='请输入姓名'/>
+          </div>
+        </div>
+
+        <div class="box" draggable="true">
+          <div class="line">
+            <span>年龄：</span>
+            <input type='text' name='age' placeholder='请输入年龄'/>
+          </div>
+        </div>
+
+        <div class="box" draggable="true">
+          <div class="line">
+            <span>性别：</span>
+            <label><input type='radio' name='gender' value='male'/>男</label>
+            <label><input type='radio' name='gender' value='male'/>女</label>
+          </div>
+        </div>
+
+        <div class="box" draggable="true">
+          <div class="line">
+            <span>兴趣爱好：</span>
+            <label><input type='checkbox' name='hobby' value='basketball'/>篮球</label>
+            <label><input type='checkbox' name='hobby' value='football'/>足球</label>
+            <label><input type='checkbox' name='hobby' value='badminton'/>网球</label>
+            <label><input type='checkbox' name='hobby' value='tabletennis'/>羽毛球</label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    (function($) {
+      var dragSrc
+      $('.box').each(function(index,ele){
+        $(ele).on('dragstart',function(event){
+          dragSrc = this
+        })
+      })
+
+      $('#container').on('drop',function(e){
+        e.preventDefault();
+        $(this).append($(dragSrc).find('.line').clone())
+        $(this).removeClass('containerDrop')
+      }).on('dragover',function(e){
+        e.preventDefault();
+      }).on('dragenter',function(e){
+        e.preventDefault();
+        $(this).addClass('containerDrop')
+      }).on('dragleave',function(e){
+        e.preventDefault();
+        $(this).removeClass('containerDrop')
+      })
+    })(jQuery)
+  </script>
+</body>
+</html>
