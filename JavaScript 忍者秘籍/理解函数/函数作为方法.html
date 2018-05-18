@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    #results li.pass{
+      color:green
+    }
+    #results li.fail{
+      color: red
+    }
+</style>
+</head>
+<body>
+  <ul id='results'></ul>
+  <script>
+
+    function whatsMyContext() {
+      return this;
+    }
+
+    assert(whatsMyContext() === window,'function call on window')
+
+    var getMyThis = whatsMyContext
+
+    assert(getMyThis() === window,'Anther function call in window')
+
+    var ninja1 = {
+      getMyThis: whatsMyContext
+    }
+
+    assert(ninja1.getMyThis()===ninja1,'working with 1st ninja')
+
+    var ninja2 = {
+      getMyThis: whatsMyContext
+    }
+
+    assert(ninja2.getMyThis() === ninja2,'working with 2rd ninja')
+
+    function assert(value,desc){
+      var li = document.createElement('li');
+      li.className = value?"pass":'fail';
+      li.appendChild(document.createTextNode(desc));
+      document.getElementById("results").appendChild(li)
+    }
+  </script>
+</body>
+</html>
