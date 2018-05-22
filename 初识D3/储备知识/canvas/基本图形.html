@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <canvas id='mycanvas' width='960' height='600'></canvas>
+  <script>
+    const canvas = document.getElementById('mycanvas')
+    const ctx = canvas.getContext('2d')
+    const width = canvas.width
+    const height = canvas.height
+
+    //线段
+    ctx.save()
+    ctx.strokeWidth=5
+    ctx.beginPath();
+    ctx.moveTo(10,10);
+    ctx.lineTo(100,100);
+    ctx.stroke();
+
+    ctx.restore();
+
+    //矩形
+    ctx.save()
+    ctx.strokeStyle = 'black'
+    ctx.fillStyle='yellow'
+    ctx.rect(140,10,100,90)
+    ctx.fill();
+    ctx.stroke();
+
+    ctx.restore()
+    
+    //圆
+    ctx.save()
+    ctx.fillStyle = 'green'
+    ctx.beginPath()
+    ctx.arc(320,55,50,0,Math.PI*2)
+    ctx.fill()
+    
+    ctx.restore()
+    
+    //多边形
+    ctx.save()
+    ctx.strokeStyle='black'
+    ctx.fillStyle = 'pink'
+    ctx.lineWidth = 3
+    ctx.beginPath()
+    ctx.moveTo(440,10)
+    ctx.lineTo(490,50)
+    ctx.lineTo(465,100)
+    ctx.lineTo(415,100)
+    ctx.lineTo(390,50)
+    ctx.closePath();
+    ctx.fill()
+    ctx.stroke()
+    ctx.restore()
+
+    //二次贝塞尔曲线
+    ctx.save();
+    ctx.strokeStyle = 'black'
+    ctx.linePath = 5
+    ctx.beginPath()
+    ctx.moveTo(10,200)
+    ctx.quadraticCurveTo(60,100,150,200)
+    ctx.stroke()
+    ctx.restore()
+
+    //三次贝塞尔曲线
+    ctx.save()
+    ctx.storkeStyle='black'
+    ctx.lineWidth = 5
+    ctx.beginPath()
+    ctx.moveTo(250,200)
+    ctx.bezierCurveTo(330,110,400,280,500,200)
+    ctx.stroke()
+    ctx.restore()
+  </script>
+</body>
+</html>
