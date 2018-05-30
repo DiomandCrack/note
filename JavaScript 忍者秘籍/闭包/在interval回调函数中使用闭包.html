@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+      #results li.pass{
+        color:green
+      }
+      #results li.fail{
+        color: red
+      }
+
+      #box1{
+        width: 50px;
+        height: 50px;
+        background: #1188ff;
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+  </style>
+</head>
+
+<body>
+  <ul id='results'></ul>
+  <div id="box1">
+
+  </div>
+  <script>
+    function animateIt(elementId){
+      var elem = document.getElementById(elementId)
+      var tick = 0
+      var timer = setInterval(function(){
+        if(tick<100){
+          elem.style.left = elem.style.top = tick + 'px'
+          tick++
+        }
+        else{
+          clearInterval(timer)
+          assert(tick===100,'tick access via a closure')
+          assert(elem,"element also accessed via a closure")
+          assert(timer,'Timer reference also obtained via a closure')
+        }
+      },10)
+    }
+    animateIt('box1')
+    //断言
+    function assert(value,desc){
+      var li = document.createElement('li');
+      li.className = value?"pass":'fail';
+      li.appendChild(document.createTextNode(desc));
+      document.getElementById("results").appendChild(li)
+    }
+
+    //report
+    function report(text){
+      assert(true,text)
+    }
+  </script>
+</body>
+</html>
