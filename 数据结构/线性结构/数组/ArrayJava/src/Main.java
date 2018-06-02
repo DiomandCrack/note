@@ -19,6 +19,27 @@ public class Main {
             System.out.println(score);
         }
 
+        Array<Integer> myArr = new Array<>(10);
+        for(int i=0;i<10;i++){
+            myArr.addLast(i);
+        }
 
+        System.out.println(myArr);
+
+        myArr.addFirst(100);
+
+        System.out.println(myArr);
+
+        myArr.add(3,33);
+
+        System.out.println(myArr);
+
+        myArr.remove(2);
+
+        System.out.println(myArr);
+
+        myArr.removeElement(100);
+
+        System.out.println(myArr);
     }
 }
