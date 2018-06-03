@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    
+    removeDuplicates = function(nums){
+      let len = nums.length
+      for(let i = len; i > 0; i --){
+        if(nums[i]===nums[i-1]){
+          nums.splice(i,1)
+        }
+      }
+      return nums.length
+    }
+
+    const array = [0,0,1,1,1,2,2,3,3,4]
+    
+    console.log(removeDuplicates(array),array)
+  </script>
+</body>
+</html>
