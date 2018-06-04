@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 我的实现 -->
+  <script>
+    var removeElement = function(nums, val){
+      let len = nums.length;
+      for(let i=0; i<len; i++){
+        if(nums[i] == val){
+          nums.splice(i,1);
+          i--;
+          len--;
+        }
+      }
+      return len
+    }
+  </script>
+  <!-- 最快实现 -->
+  <script>
+    var removeElement = function(nums,val){
+      if(nums.length == 0) return nums.length;
+      if(nums.indexOf(val)<0) return nums.length;
+
+      var count = 0;
+      var len = nums.length
+      for(var i=0;i<len;i++){
+        if(nums[i]!=val){
+          nums[count++] = nums[i];
+        }
+      }
+      return count
+    }
+
+  </script>
+</body>
+</html>

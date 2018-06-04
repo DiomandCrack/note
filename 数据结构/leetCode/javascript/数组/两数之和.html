@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 我的实现,最简单的 -->
+  <script>
+    var twoSum = function(nums, target) {
+      const len = nums.length
+      for(let i=0;i<len;i++){
+          for(let j=0; j<len;j++){
+              if(i===j){
+                  continue
+              }
+              if(nums[i] + nums[j] === target){
+                  return [i,j]
+              }
+          }
+      }
+    };
+  </script>
+  <!-- 最快实现 -->
+  <script>
+    var twoSumB = function(nums,target){
+      let len = nums.length;
+      let calc = {};
+
+      for(let i = 0;i<len;i++){
+        let temp = target - nums[i];
+
+        if(typeof calc[temp] !== 'undefined'){
+          return [calc[temp],i];
+        }
+        calc[nums[i]] = i;
+      }
+
+      return [];
+    }
+  </script>
+</body>
+</html>
