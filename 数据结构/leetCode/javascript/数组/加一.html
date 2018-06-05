@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 我的实现 -->
+  <script>
+    var plusOne = function (digits){
+      const last = digits.length - 1;
+      for(let i=last; i>-1; i--){
+        if(digits[i]!==9){
+          digits[i]++
+          break;
+        }else{
+          digits[i] = 0
+        }
+      }
+
+      if(digits[0] === 0){
+        digits.unshift(1);
+      }
+
+      return digits
+    }
+  </script>
+</body>
+</html>
