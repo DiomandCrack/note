@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 我的实现 -->
+  <script>
+    var isAnagram = function(s, t) {
+      let slen = s.length;
+      let tlen = t.length;
+      if(slen !== t.length){
+          return false
+      }
+      let temp = {}
+      for(let i=0; i<slen; i++){
+          if(temp[s[i]]===undefined){
+              temp[s[i]]=1;
+          }else{
+              temp[s[i]]++;
+          }
+      }
+      for(let st in temp){
+          const times = temp[st];
+          let count = 0
+          let pos = t.indexOf(st);
+          while(pos!==-1){
+              count++;
+              pos = t.indexOf(st,pos+1)
+          }
+          if(times !== count){
+              return false
+          }
+      }
+      return true
+    };
+  </script>
+
+  <!-- 最快的实现 -->
+  <script>
+    //很聪明的实现 如果所有的值都是0 说明两个字符串是异位词
+    var isAnagram = function (s, t) {
+        var len = s.length;
+        const map = {
+        a: 0, b: 0, c: 0, d: 0, e: 0, f: 0, g: 0, h: 0, i: 0, j: 0, k: 0, l: 0, m: 0, n: 0, o: 0, p: 0, q: 0, r: 0, s: 0, t: 0, u: 0, v: 0, w: 0, x: 0, y: 0, z: 0
+        };
+        if (len !== t.length) {
+            return false;
+        }
+        for (let i = 0; i < len; i++) {
+            map[s[i]]++;
+            map[t[i]]--;
+        }
+        for (let k in map) {
+            if (map[k] !== 0) {
+                return false;
+            }
+        }
+
+        return true;
+    };
+  </script>
+</body>
+</html>
