@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 我的实现 -->
+  <script>
+    var firstUniqChar = function(s) {
+        if(s===''){
+            return -1
+        }
+        let len = s.length
+        if(len === 1){
+            return 0
+        }
+        var string = {}
+        var index = {}
+        for(var i=0; i<len; i++){
+            if(string[s[i]]===undefined){
+                string[s[i]]=0
+            }else{
+                string[s[i]]++
+            }
+            index[s[i]] = i
+        }
+        
+        for(let s in string){
+            if(string[s]===0){
+                return index[s]
+            }
+        }
+        return -1
+    };
+  </script>
+</body>
+</html>
