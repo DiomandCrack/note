@@ -34,6 +34,9 @@ module.exports = {
       "node_modules",
       path.resolve(__dirname,'src')
     ],
+    alias:{
+      utils$:path.resolve(__dirname,'src/utils')
+    },
     extensions:[".wasm",".mjs",".js",".json","jsx"]
   },
 
