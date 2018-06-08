@@ -1,0 +1,13 @@
+{
+  "name": "learning-webpack",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "build": "webpack --mode production",
+    "webpack": "^4.11.1"
+  },
+  "dependencies": {
+    "webpack-cli": "^3.0.3"
+  }
+}
