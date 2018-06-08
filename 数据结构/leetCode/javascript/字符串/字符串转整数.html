@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    var myAtoi = function (str) {
+      let len = str.length;
+      maxV = Math.pow(2, 31) - 1
+      minV = Math.pow(-2, 31)
+      let num = parseInt(str)
+
+      if (num !== num) {
+        return 0
+      }
+
+      if (num > maxV) {
+        num = maxV
+      }
+
+      if (num < minV) {
+        num = minV
+      }
+
+      return num
+    };
+  </script>
+</body>
+
+</html>

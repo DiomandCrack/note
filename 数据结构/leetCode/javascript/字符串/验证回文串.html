@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- 我的实现 -->
+  <script>
+    var isPalindrome = function (s) {
+      function isSymbol(c) {
+        const cc = c.charCodeAt();
+        if (cc >= 32 && cc < 48 || cc > 57 && cc <= 64 || cc >= 91 && cc <= 96 || cc >= 123) {
+          return true
+        }
+        return false
+      }
+      let len = s.length
+      let symbolNum = 0;
+      let bNum = 0;
+      if (s == '') {
+        return true
+      }
+      for (let i = 0; i < len; i++) {
+        if (isSymbol(s[i])) {
+          symbolNum++
+          continue
+        } else {
+          const f = s[i].toLowerCase();
+          let index = len - 1 + symbolNum - i - bNum
+          let l = s[index].toLowerCase()
+          if (isSymbol(l)) {
+            while (isSymbol(s[index])) {
+              index--
+              bNum++
+            }
+            l = s[index].toLowerCase();
+          }
+          if (f !== l) {
+            return false
+          }
+        }
+      }
+
+      return true
+    };
+  </script>
+  <!-- 最快的实现 -->
+  <script>
+    //回文是镜像的
+    var isPalindrome = function (s) {
+      s = s.replace(/[^\w]/g, "")
+      if (s.length == 0) return true
+
+      var start = 0,
+        end = s.length - 1
+      while (start < end) {
+        if (!s[start] || !s[end]) {
+          return false
+        }
+        if (s[start].toLowerCase() != s[end].toLowerCase()) {
+          return false
+        }
+        start++
+        end--
+      }
+      return true
+    };
+  </script>
+</body>
+
+</html>
