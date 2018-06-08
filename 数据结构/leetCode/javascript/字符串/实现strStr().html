@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    //有些耍无赖 也比第一那个直接 indexOf强点 
+    var strStr = function (haystack, needle) {
+      if (!needle) {
+        return 0
+      }
+      const reg = new RegExp(needle, 'g')
+      return haystack.search(reg)
+    };
+  </script>
+  <!--还得看外网的leetCode 听说应该用滚动哈西算法 不过我找到了一个非常好理解的答案 不过非常慢-->
+  <script>
+    var strStr = function (haystack, needle) {
+      for (var i = 0;; i++) {
+        for (var j = 0;; j++) {
+          //3 needle全部遍历完 说明找到了
+          if (j == needle.length) return i;
+          //2 needle比haystack匹配的要长 haystack上不完整
+          if (i + j == haystack.length) return -1;
+          //1 如果needle[j]不等于haystack[i+j]说明不相等
+          if (needle[j] != haystack[i + j]) break;
+        }
+      }
+    };
+  </script>
+<!-- 比较快的实现 -->
+  <script>
+    var strStr = function(haystack, needle) {
+      if (!needle.length) {
+        return 0;
+      }
+
+      for (let i = 0; i <= haystack.length - needle.length; i++) {
+        if (haystack[i] === needle[0]) {
+          //直接截取字符串....
+          if (haystack.substring(i, i + needle.length) === needle) {
+            return i;
+          }
+        }
+      }
+      return -1;
+    };
+  </script>
+</body>
+
+</html>
