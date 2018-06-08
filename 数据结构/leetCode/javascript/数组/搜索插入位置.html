@@ -9,6 +9,7 @@
 </head>
 
 <body>
+  <!-- 我的实现 -->
   <script>
     var searchInsert = function (nums, target) {
       const len = nums.length
@@ -29,6 +30,17 @@
         }
       }
     }
+  </script>
+  <!-- 最简洁的实现 就8行！-->
+  <script>
+    var searchInsert = function (a, target) {
+      var i = 0;
+      var len = a.length
+      while (a[i] < target && i < len) {
+        i++;
+      }
+      return i;
+    };
   </script>
 </body>
 
