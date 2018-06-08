@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- 我的实现 -->
+  <script>
+    var searchInsert = function (nums, target) {
+      const len = nums.length
+      for (let i = 0; i < len; i++) {
+        if (target === nums[i]) {
+          return i
+        } else {
+          if (i === 0 && target < nums[0]) {
+            return 0
+          }
+
+          if (i === len - 1 && target > nums[len - 1]) {
+            return len
+          }
+          if (nums[i] > target && nums[i - 1] < target) {
+            return i
+          }
+        }
+      }
+    }
+  </script>
+  <!-- 最简洁的实现 就8行！-->
+  <script>
+    var searchInsert = function (a, target) {
+      var i = 0;
+      var len = a.length
+      while (a[i] < target && i < len) {
+        i++;
+      }
+      return i;
+    };
+  </script>
+</body>
+
+</html>

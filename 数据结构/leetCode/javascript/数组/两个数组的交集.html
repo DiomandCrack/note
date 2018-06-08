@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var intersect = function(nums1, nums2) {
+      let len1 = nums1.length;
+      let len2 = nums2.length;
+      if(!len1||!len2){
+          return []
+      }
+
+      let array = [];
+      for(let i=0; i<len1; i++){
+          for(let j=0;j<len2;j++){
+              if(nums2[j]==nums1[i]){
+                  array.push(nums2[j])
+                  nums1.splice(i,1)
+                  nums2.splice(j,1)
+                  i--;
+                  j--;
+                  len1--;
+                  len2--;
+              }    
+          }
+        }
+      return array;
+    };
+  </script>
+</body>
+</html>
