@@ -12,23 +12,23 @@
   <script>
     var myAtoi = function (str) {
       let len = str.length;
-      maxV = Math.pow(2, 31) - 1
-      minV = Math.pow(-2, 31)
-      let num = parseInt(str)
+      maxV = Math.pow(2, 31) - 1;
+      minV = Math.pow(-2, 31);
+      let num = parseInt(str);
 
       if (num !== num) {
-        return 0
+        return 0;
       }
 
       if (num > maxV) {
-        num = maxV
+        num = maxV;
       }
 
       if (num < minV) {
-        num = minV
+        num = minV;
       }
 
-      return num
+      return num;
     };
   </script>
 </body>
