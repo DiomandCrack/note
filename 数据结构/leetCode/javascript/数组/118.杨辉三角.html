@@ -12,7 +12,6 @@
   <!-- 我的实现 -->
   <script>
     var generate = function (numRows) {
-
       var arr = [];
       if (numRows === 0) {
         return arr
@@ -29,11 +28,6 @@
             arr[i][j] = arr[i - 1][j - 1] + arr[i - 1][j]
           }
         }
-      }
-
-
-      for (var i = 1; i < numRows; i++) {
-
       }
       return arr
     };

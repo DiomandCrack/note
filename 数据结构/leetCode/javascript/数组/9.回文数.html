@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- 我的实现 -->
+  <script>
+    var isPalindrome = function (x) {
+      if(x<0){
+        return false
+      }
+      const arr = x.toString().split('')
+      let start = 0;
+      let end = arr.length - 1
+      while (start < end) {
+        if (arr[start] !== arr[end]) {
+          return false
+        }
+        start++
+        end--
+      }
+      return true
+    };
+  </script>
+  <!-- 比我快的 -->
+  <script>
+    var isPalindrome = function (x) {
+      if (x < 0) return false;
+      let origin = x;
+      let ans = 0;
+      while (x != 0) {
+        ans = ans * 10 + x % 10;
+        x = parseInt(x / 10);
+      }
+      return ans == origin ? true : false;
+    };
+  </script>
+</body>
+
+</html>
