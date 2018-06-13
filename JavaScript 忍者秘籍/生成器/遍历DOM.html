@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    #results li.pass{
+      color:green
+    }
+    
+    #results li.fail{
+      color: red
+    }
+
+    #box1{
+      width: 50px;
+      height: 50px;
+      background: #1188ff;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <ul id='results'></ul>
+  <div id="subTree">
+    <form><input type="text" name="" id=""></form>
+    <p>Paragraph</p>
+    <span>Span</span>
+  </div>
+  <script>
+    function traverseDOM(element, callback){
+      callback(element);
+      element = element.firstElementChild;
+      while(element){
+        traverseDOM(element,callback);
+        element = element.nextElementSibling;
+      }
+    }
+
+    const subTree = document.getElementById("subTree")
+    traverseDOM(subTree,function(element){
+      assert(element!==null,element.nodeName)
+    });
+    function assert(value,desc){
+      var li = document.createElement('li');
+      li.className = value?"pass":'fail';
+      li.appendChild(document.createTextNode(desc));
+      document.getElementById("results").appendChild(li)
+    }
+
+    //report
+    function report(text){
+      assert(true,text)
+    }
+  </script>
+</body>
+</html>
