@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    #results li.pass{
+      color:green
+    }
+    
+    #results li.fail{
+      color: red
+    }
+
+    #box1{
+      width: 50px;
+      height: 50px;
+      background: #1188ff;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+  </style>
+</head>
+
+<ul id='results'></ul>
+<body>
+  
+  <script>
+    function* IdGenerator() {
+      let id = 0;
+      //永远不会done 的生成器
+      while(true){
+        yield ++id;
+      }
+    }
+    
+    const idIterator = IdGenerator();
+
+    const ninja1 = {id:idIterator.next().value}
+    const ninja2 = {id:idIterator.next().value}
+    const ninja3 = {id:idIterator.next().value}
+
+    assert(ninja1.id === 1,"First ninja has id 1")
+    assert(ninja2.id === 2,"Second ninja has id 2")
+    assert(ninja3.id === 3,"Third ninja has id 3")
+
+    function assert(value,desc){
+      var li = document.createElement('li');
+      li.className = value?"pass":'fail';
+      li.appendChild(document.createTextNode(desc));
+      document.getElementById("results").appendChild(li)
+    }
+
+    //report
+    function report(text){
+      assert(true,text)
+    }
+  </script>
+</body>
+</html>
