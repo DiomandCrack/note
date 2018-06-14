@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- 我的实现 -->
+  <script>
+    var longestCommonPrefix = function (strs) {
+      if (strs.length === 0) {
+        return ""
+      }
+      if (strs.length === 1) {
+        return strs[0]
+      }
+      let len = strs.length
+      let minLen = strs[0].length
+      let minStr = strs[0]
+      for (let i = 0; i < len; i++) {
+        if (strs[i].length < minLen) {
+          minLen = strs[i].length
+          minStr = strs[i]
+        }
+      }
+
+      for (let i = 0; i < minLen; i++) {
+        let temp = strs[0][i]
+        for (let j = 1; j < len; j++) {
+          if (strs[j][i] !== temp) {
+            if (i === 0) {
+              return ''
+            } else {
+              return strs[0].substr(0, i)
+            }
+          }
+        }
+      }
+      return minStr
+    };
+  </script>
+</body>
+
+</html>
