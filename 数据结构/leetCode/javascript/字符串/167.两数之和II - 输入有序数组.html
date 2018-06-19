@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- 我的实现 超慢的 比较简单-->
+  <script>
+    var twoSum = function (numbers, target) {
+      let len = numbers.length
+      for (let i = 0; i < len; i++) {
+        for (let j = i + 1; j < len; j++) {
+          if (numbers[i] + numbers[j] === target) {
+            return [i + 1, j + 1]
+          }
+        }
+      }
+    };
+  </script>
+
+  <!-- 我改进的 -->
+  <script>
+    var twoSum = function (numbers, target) {
+      let len = numbers.length
+      const temp = {}
+      for (let i = 0; i < len; i++) {
+        const index = numbers[i]
+        if (temp[index] !== undefined) {
+          return [temp[index] + 1, i + 1]
+        }
+
+        temp[target - index] = i
+      }
+      return []
+    };
+  </script>
+</body>
+
+</html>
