@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- 我的实现 -->
+  <script>
+    var getRow = function (rowIndex) {
+      const arr = [
+        [1],
+        [1, 1]
+      ]
+      for (let i = 2; i <= rowIndex; i++) {
+        arr[i] = []
+        arr[i][0] = 1
+        arr[i][i] = 1
+        for (let j = 1; j < i; j++) {
+          arr[i][j] = arr[i - 1][j - 1] + arr[i - 1][j]
+        }
+      }
+      return arr[rowIndex]
+    };
+  </script>
+  <!-- 最快的实现 -->
+  <script>
+    var getRow = function (rowIndex) {
+      let pv = [1];//上一个 也就是第一个
+      if (rowIndex === 0) return pv;
+      let cur;
+      for (let i = 0; i < rowIndex; i++) {
+        cur = [1];
+        for (let j = 0; j < pv.length - 1; j++) {
+          cur.push(pv[j] + pv[j + 1]);
+        }
+        cur.push(1);
+        pv = cur;
+      }
+      return cur;
+    };
+  </script>
+</body>
+
+</html>
