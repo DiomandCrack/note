@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- 我的实现 递归 嗯 很慢-->
+  <script>
+    /**
+     * @param {number} n
+     * @return {string}
+     */
+    var countAndSay = function (n) {
+      let string = ''
+      if (n == 1) {
+        string = '1'
+      } else {
+        let lastCount = countAndSay(n - 1)
+        let len = lastCount.length
+        let temp = 0
+        let index = 0
+        let tempString = ''
+        for (let i = 0; i < len; i++) {
+          index++
+          temp = lastCount[i]
+          if (lastCount[i] !== lastCount[i + 1]) {
+            tempString += '' + index + temp
+            index = 0
+          }
+        }
+        string = tempString
+      }
+      return string
+    };
+  </script>
+</body>
+
+</html>
