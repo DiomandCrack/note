@@ -20,6 +20,9 @@ import slice from './slice.js'
  * // => [['a', 'b', 'c'], ['d']]
  */
 function chunk(array, size) {
+  /**
+   * size = size>0?size:0
+   */
   size = Math.max(size, 0)
   const length = array == null ? 0 : array.length
   if (!length || size < 1) {
